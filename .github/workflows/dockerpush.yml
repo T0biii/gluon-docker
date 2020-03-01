@@ -1,4 +1,4 @@
-name: Docker Image CI2
+name: Docker Image CI
 
 on:
   push:
@@ -64,14 +64,14 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
           # Use Docker `latest` tag convention
-          [ "$VERSION" == "FFMUC-Test" ] && VERSION=latest
+          [ "$VERSION" == "FFMUC" ] && VERSION=latest
+          
           # make IMAGE_ID and Version lowercase
           IMAGE_ID=$(echo "$IMAGE_ID" | sed -e 's/\(.*\)/\L\1/')
           VERSION=$(echo "$VERSION" | sed -e 's/\(.*\)/\L\1/')
           
           echo $IMAGE_ID
           echo $VERSION
+          
           docker tag image $IMAGE_ID:$VERSION
-          echo TAG?
           docker push $IMAGE_ID:$VERSION
-          echo PUSH?
