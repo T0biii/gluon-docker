@@ -4,11 +4,20 @@ Docker image to build firmware for the [Freifunk München](https://ffmuc.net) co
 
 The build process is started automatically when the container is run. There is no need to manually run commands inside the container anymore.
 
+## Pull Docker image from Github
+
+	docker login -u USERNAME docker.pkg.github.com
+	docker pull docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
+	docker run --rm --name ffmuc -v "$(pwd)/site-ffm:/site-ffm" docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
+
+The Firmware files can be found in `$(pwd)/site-ffm/output` after the container has been successfully run
+
+
 ## Docker-Compose example
 
 See [docker-compose.yml](https://github.com/T0biii/gluon-docker/blob/FFMUC-Test/docker-compose.yml)
 
-## Shell trail
+## Shell trail (advanced)
 
 This section shows the commands that are needed to run a build with the Docker image. Make sure you know what you are doing before hitting the Enter key.
 
