@@ -1,1 +1,1 @@
-docker build --no-cache -t ffmuc-v2020.1 .
+docker build --no-cache -t ffmuc-experimental .
