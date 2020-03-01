@@ -28,7 +28,7 @@ The build process can be configured with build arguments(not ATM):
     
 You can run the container with some env to change the Version
 
-	docker run --name ffmc -e "FFMUC_REPO=https://github.com/freifunkMUC/site-ffm.git" -e "FFMUC_VERSION=stable" ffmuc-experimental
+	docker run --name ffmc -e "FFMUC_REPO=https://github.com/T0biii/site-ffm.git" -e "FFMUC_VERSION=stable" ffmuc-experimental
 
 To start the container with an arbitrary command, you can:
 
