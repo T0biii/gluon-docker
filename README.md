@@ -8,7 +8,14 @@ The build process is started automatically when the container is run. There is n
 
 	docker login -u USERNAME docker.pkg.github.com
 	docker pull docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
+	
+Build the experimental Firmware for FFMUC
+
 	docker run --rm --name ffmuc -v "$(pwd)/site-ffm:/site-ffm" docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
+
+Build the stable Firmware for FFMUC
+
+	docker run --rm --name ffmuc -e "FFMUC_VERSION=stable" -v "$(pwd)/site-ffm:/site-ffm" docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
 
 The Firmware files can be found in `$(pwd)/site-ffm/output` after the container has been successfully run
 
