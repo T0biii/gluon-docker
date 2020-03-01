@@ -5,4 +5,7 @@ services:
         container_name: ffmuc
         volumes:
             - './site-ffm:/site-ffm'
-        image: docker.pkg.github.com/t0biii/gluon-docker/ffmuc:t0biii-v0.0.2
+        image: docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
+        environment:
+            - FFMUC_REPO=https://github.com/T0biii/site-ffm.git
+            - FFMUC_VERSION=T0biii-test-for-docker
