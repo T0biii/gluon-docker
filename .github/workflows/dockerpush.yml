@@ -77,7 +77,10 @@ jobs:
           docker push $IMAGE_ID:$VERSION
           
       - name: Log into Docker registry
-        run: echo "${{ secrets.DockerAccessToken }}" | docker login -u ${{ github.actor }} --password-stdin
+                  IMAGE_ID=$(echo "$IMAGE_ID" | sed -e 's/\(.*\)/\L\1/')
+        run: |
+          USER=$(echo ${{ github.actor }} | sed -e 's/\(.*\)/\L\1/')
+          echo "${{ secrets.DockerAccessToken }}" | docker login -u $USER --password-stdin
 
       - name: Push image to Docker
         run: |
