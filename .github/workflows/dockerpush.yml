@@ -50,10 +50,10 @@ jobs:
       - name: Build image
         run: docker build . --file Dockerfile --tag image
 
-      - name: Log into Github registry
+      - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
 
-      - name: Push image to Github
+      - name: Push image
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
 
@@ -75,33 +75,3 @@ jobs:
           
           docker tag image $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
-          
-      - name: Log into Docker registry
-                  IMAGE_ID=$(echo "$IMAGE_ID" | sed -e 's/\(.*\)/\L\1/')
-        run: |
-          USER=$(echo ${{ github.actor }} | sed -e 's/\(.*\)/\L\1/')
-          echo "${{ secrets.DockerAccessToken }}" | docker login -u $USER --password-stdin
-
-      - name: Push image to Docker
-        run: |
-          IMAGE_ID=${{ github.repository }}/$IMAGE_NAME
-
-          # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-
-          # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-
-          # Use Docker `latest` tag convention
-          [ "$VERSION" == "FFMUC" ] && VERSION=latest
-          
-          # make IMAGE_ID and Version lowercase
-          IMAGE_ID=$(echo "$IMAGE_ID" | sed -e 's/\(.*\)/\L\1/')
-          VERSION=$(echo "$VERSION" | sed -e 's/\(.*\)/\L\1/')
-          
-          echo IMAGE_ID=$IMAGE_ID
-          echo VERSION=$VERSION
-          
-          docker tag image $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:$VERSION
-       
