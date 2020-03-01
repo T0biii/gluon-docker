@@ -17,18 +17,18 @@ Clone the repository:
 
 Use the following commands on the host to create and run the docker image:
 
-    docker build -t ffmuc-v2020.1 .
-    docker run -it --name ffmc ffmuc-v2020.1 
+    docker build -t ffmuc-experimental .
+    docker run -it --name ffmc ffmuc-experimental 
 
 The container will automatically start the firmware build process.
 
 The build process can be configured with build arguments(not ATM):
 
-    #docker build --build-arg FFMD_VERSION=tags/v0.38-beta.1 -t ffmuc-v2020.1 .
+    #docker build --build-arg FFMD_VERSION=tags/v0.38-beta.1 -t ffmuc-experimental .
 
 To start the container with an arbitrary command, you can:
 
-	docker run -it --name ffmc ffmuc-v2020.1 "/bin/bash"
+	docker run -it --name ffmc ffmuc-experimental "/bin/bash"
 
 You can run a shell in an existing container with the following command:
 
@@ -41,12 +41,12 @@ To restart the image once it has been stopped:
 Once you are done, container and image can be deleted by calling
 
     docker rm ffmc
-    docker rmi ffmuc-v2020.1
+    docker rmi ffmuc-experimental
 
 The build needs up to 60 GB of hard disk space. If the docker environment cannot provide the neccessary space, the path `/site-ffm` should be bound to a different directory:
 
     docker run -it --name ffmuc \
         -v "$(pwd)/site-ffm:/site-ffm" \
-        ffmuc-v2020.1
+        ffmuc-experimental
 
 This will create and bind the directory `site-ffm` in the current working directory to the container's output directories.
