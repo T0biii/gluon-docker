@@ -25,6 +25,10 @@ The container will automatically start the firmware build process.
 The build process can be configured with build arguments(not ATM):
 
     #docker build --build-arg FFMD_VERSION=tags/v0.38-beta.1 -t ffmuc-experimental .
+    
+You can run the container with some env to change the Version
+
+	docker run -e "FFMUC_REPO=https://github.com/freifunkMUC/site-ffm" -e "FFMUC_VERSION=stable" ffmuc-experimental
 
 To start the container with an arbitrary command, you can:
 
