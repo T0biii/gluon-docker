@@ -6,7 +6,7 @@ The build process is started automatically when the container is run. There is n
 
 ## Pull Docker image from Github
 
-	docker login -u USERNAME docker.pkg.github.com
+	docker login docker.pkg.github.com
 	docker pull docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
 	
 Build the experimental Firmware for FFMUC
