@@ -4,7 +4,27 @@ Docker image to build firmware for the [Freifunk München](https://ffmuc.net) co
 
 The build process is started automatically when the container is run. There is no need to manually run commands inside the container anymore.
 
-## Shell trail
+## Pull Docker image from Github
+
+	docker login docker.pkg.github.com
+	docker pull docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
+	
+Build the experimental Firmware for FFMUC
+
+	docker run --rm --name ffmuc -v "$(pwd)/site-ffm:/site-ffm" docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
+
+Build the stable Firmware for FFMUC
+
+	docker run --rm --name ffmuc -e "FFMUC_VERSION=stable" -v "$(pwd)/site-ffm:/site-ffm" docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
+
+The Firmware files can be found in `$(pwd)/site-ffm/output` after the container has been successfully run
+
+
+## Docker-Compose example
+
+See [docker-compose.yml](https://github.com/T0biii/gluon-docker/blob/FFMUC-Test/docker-compose.yml)
+
+## Shell trail (advanced)
 
 This section shows the commands that are needed to run a build with the Docker image. Make sure you know what you are doing before hitting the Enter key.
 
@@ -13,7 +33,6 @@ Clone the repository:
 
     git clone https://github.com/T0biii/gluon-docker.git
     cd gluon-docker/
-    git checkout FFMUC
 
 Use the following commands on the host to create and run the docker image:
 
@@ -21,10 +40,10 @@ Use the following commands on the host to create and run the docker image:
     docker run -it --name ffmc ffmuc-experimental 
 
 The container will automatically start the firmware build process.
+    
+You can run the container with some environment variables to change the version for the build
 
-The build process can be configured with build arguments(not ATM):
-
-    #docker build --build-arg FFMD_VERSION=tags/v0.38-beta.1 -t ffmuc-experimental .
+	docker run --name ffmc -e "FFMUC_REPO=https://github.com/T0biii/site-ffm.git" -e "FFMUC_VERSION=stable" ffmuc-experimental
 
 To start the container with an arbitrary command, you can:
 
@@ -50,3 +69,5 @@ The build needs up to 60 GB of hard disk space. If the docker environment cannot
         ffmuc-experimental
 
 This will create and bind the directory `site-ffm` in the current working directory to the container's output directories.
+
+
