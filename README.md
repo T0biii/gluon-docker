@@ -35,7 +35,9 @@ For Docker Hub
 	docker run --rm --name ffmuc -e "FFMUC_VERSION=stable" -v "$(pwd)/site-ffm:/site-ffm" t0biii/gluon-docker
 
 The Firmware files can be found in `$(pwd)/site-ffm/output` after the container has been successfully run
-
+HINT: Add "-d" before the image name to run the Container in the background example:
+	
+	docker run --rm --name ffmuc -e "FFMUC_VERSION=stable" -v "$(pwd)/site-ffm:/site-ffm" -d t0biii/gluon-docker
 
 ## Docker-Compose example
 
