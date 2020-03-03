@@ -14,16 +14,31 @@ from Docker Hub
 
 	docker pull t0biii/gluon-docker
 	
-Build the experimental Firmware for FFMUC
+## Build the experimental Firmware for FFMUC
 
+For GitHub
+	
 	docker run --rm --name ffmuc -v "$(pwd)/site-ffm:/site-ffm" docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
+	
+For Docker Hub
 
-Build the stable Firmware for FFMUC
+	docker run --rm --name ffmuc -v "$(pwd)/site-ffm:/site-ffm" t0biii/gluon-docker
+
+## Build the stable Firmware for FFMUC
+
+For GitHub
 
 	docker run --rm --name ffmuc -e "FFMUC_VERSION=stable" -v "$(pwd)/site-ffm:/site-ffm" docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
 
+For Docker Hub
+
+	docker run --rm --name ffmuc -e "FFMUC_VERSION=stable" -v "$(pwd)/site-ffm:/site-ffm" t0biii/gluon-docker
+
 The Firmware files can be found in `$(pwd)/site-ffm/output` after the container has been successfully run
 
+HINT: Add "-d" before the image name to run the Container in the background example:
+	
+	docker run --rm --name ffmuc -e "FFMUC_VERSION=stable" -v "$(pwd)/site-ffm:/site-ffm" -d t0biii/gluon-docker
 
 ## Docker-Compose example
 
