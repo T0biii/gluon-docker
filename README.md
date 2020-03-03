@@ -82,7 +82,7 @@ Once you are done, container and image can be deleted by calling
     docker rm ffmc
     docker rmi ffmuc-experimental
 
-The build needs up to 100 GB of hard disk space. If the docker environment cannot provide the neccessary space, the path `/site-ffm` should be bound to a different directory:
+The build needs up to 142G GB of hard disk space. If the docker environment cannot provide the neccessary space, the path `/site-ffm` should be bound to a different directory:
 
     docker run -it --name ffmuc \
         -v "$(pwd)/site-ffm:/site-ffm" \
