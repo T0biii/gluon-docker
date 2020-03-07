@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+    ffmuc:
+        build: .
+        container_name: ffmuc
+        volumes:
+            - './site-ffm:/site-ffm'
+        image: t0biii/gluon-docker:latest
+        environment:
+            - FFMUC_REPO=https://github.com/T0biii/site-ffm.git
+            - FFMUC_VERSION=T0biii-test-for-docker
