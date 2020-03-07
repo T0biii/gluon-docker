@@ -42,7 +42,10 @@ HINT: Add "-d" before the image name to run the Container in the background exam
 
 ## Docker-Compose example
 
-See [docker-compose.yml](https://github.com/T0biii/gluon-docker/blob/FFMUC-Test/docker-compose.yml)
+See [docker-compose-github.yml](https://github.com/T0biii/gluon-docker/blob/FFMUC-Test/docker-compose-github.yml) for Github Pull
+See [docker-compose-dockerhub.yml](https://github.com/T0biii/gluon-docker/blob/FFMUC-Test/docker-compose-dockerhub.yml) for Docker Hub Pull
+
+after downloading you have to rename the file to `docker-compose.yml` and place it in a folder
 
 ## Shell trail (advanced)
 
