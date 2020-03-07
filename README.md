@@ -12,7 +12,7 @@ from Github
 	
 from [Docker Hub](https://hub.docker.com/repository/docker/t0biii/gluon-docker)
 
-	docker pull t0biii/gluon-docker
+	docker pull t0biii/gluon-docker:latest
 	
 ## Build the experimental Firmware for FFMUC
 
