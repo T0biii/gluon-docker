@@ -10,9 +10,9 @@ from Github
 	docker login docker.pkg.github.com
 	docker pull docker.pkg.github.com/t0biii/gluon-docker/ffmuc:latest
 	
-from Docker Hub
+from [Docker Hub](https://hub.docker.com/repository/docker/t0biii/gluon-docker)
 
-	docker pull t0biii/gluon-docker
+	docker pull t0biii/gluon-docker:latest
 	
 ## Build the experimental Firmware for FFMUC
 
@@ -42,7 +42,11 @@ HINT: Add "-d" before the image name to run the Container in the background exam
 
 ## Docker-Compose example
 
-See [docker-compose.yml](https://github.com/T0biii/gluon-docker/blob/FFMUC-Test/docker-compose.yml)
+See [docker-compose-github.yml](https://github.com/T0biii/gluon-docker/blob/FFMUC-Test/docker-compose-github.yml) for Github Pull
+
+See [docker-compose-dockerhub.yml](https://github.com/T0biii/gluon-docker/blob/FFMUC-Test/docker-compose-dockerhub.yml) for Docker Hub Pull
+
+after downloading you have to rename the file to `docker-compose.yml` and place it in a folder
 
 ## Shell trail (advanced)
 
@@ -82,7 +86,7 @@ Once you are done, container and image can be deleted by calling
     docker rm ffmc
     docker rmi ffmuc-experimental
 
-The build needs up to 100 GB of hard disk space. If the docker environment cannot provide the neccessary space, the path `/site-ffm` should be bound to a different directory:
+The build needs up to 142G GB of hard disk space. If the docker environment cannot provide the neccessary space, the path `/site-ffm` should be bound to a different directory:
 
     docker run -it --name ffmuc \
         -v "$(pwd)/site-ffm:/site-ffm" \
