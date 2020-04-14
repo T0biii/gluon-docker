@@ -1,4 +1,4 @@
-FROM gcc:9.2.0
+FROM gcc:9.3.0
 
 # Update & install packages & cleanup afterwards
 RUN DEBIAN_FRONTEND=noninteractive \
